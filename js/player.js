@@ -23,15 +23,14 @@ class Player {
     }
 
     getPlayerAtEnd(){
-        var playerAtEndRef = database.ref('playerAtEnd');
-        playerAtEndRef.on("value", (data) => {
-            playerAtEnd = data.val();
+        database.ref('playerAtEnd').on("value", (data) => {
+            this.rank = data.val();
         })
     }
 
-    static updatePlayerAtEnd(count){
+    static updatePlayerAtEnd(rank){
         database.ref('/').update({
-            playerAtEnd: count
+            playerAtEnd: rank
         });
     }
 
@@ -40,7 +39,8 @@ class Player {
         database.ref(playerIndex).set({
             name: this.name,
             distance: this.distance,
-            score:this.score
+            score:this.score,
+            rank:this.rank
         });
     }
 

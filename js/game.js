@@ -76,9 +76,11 @@ class Game{
                          
                      }
 
-                     if(allPlayers[index-1].score === 50){
+                     if(players[index-1].score === 5){
                          players[index-1].rank = this.rankRef;
                          this.rankRef++;
+                         player.update();
+                         this.update(2);
                          Player.updatePlayerAtEnd(this.rankRef);
                      }
                     
